@@ -7,8 +7,9 @@ from drf_test_app.views import UserInfoViewSet
 
 # DefaultRouter クラスのインスタンスを代入
 defaultRouter = routers.DefaultRouter()
-# userInfo/ にUserInfoViewSetをルーティングする
+# userInfo/ にUserInfoViewSetをルーティングする(エンドポイントの設定)
 defaultRouter.register('userInfo',UserInfoViewSet)
+
 urlpatterns = [
     path('admin/',admin.site.urls),
     # defaultRouter をinclude する

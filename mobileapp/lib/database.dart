@@ -18,6 +18,7 @@ class UserInfo {
     required this.createdAt,
   });
 
+// jsonオブジェクトデータをUserInfoオブジェクトに変換
   factory UserInfo.fromJson(Map<String, dynamic> json) {
     return UserInfo(
       id: json['id'],
@@ -30,6 +31,7 @@ class UserInfo {
   }
 }
 
+//非同期処理で実行し、jsonデータをデコードしUserInfoリストに格納
 Future<List<UserInfo>> fetchUserInfos() async {
   final response =
       await http.get(Uri.parse('http://10.0.2.2:8000/api/userInfo/'));
