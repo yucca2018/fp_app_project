@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'database.dart';
+import 'screens/introduction_screen.dart';
+import 'util/widget_utils.dart';
 
 void main() {
   runApp(const MyApp());
@@ -41,6 +43,7 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: const Text('ユーザーリスト'),
       ),
       body: Center(
@@ -54,9 +57,20 @@ class _UserInfoScreenState extends State<UserInfoScreen> {
                   final userInfo = snapshot.data![index];
                   return ListTile(
                     title: Text(userInfo.userName),
-                    subtitle: Text(userInfo.introduction),
+                    subtitle: Text(
+                      StringUtils.truncateText(userInfo.introduction, 10),
+                    ),
                     trailing: Text(userInfo.age.toString()),
-                    leading: Text(userInfo.createdAt),
+                    onTap: () {
+                      // 画面遷移の処理を記述する
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              IntroductionScreen(userInfo: userInfo),
+                        ),
+                      );
+                    },
                   );
                 },
               );
