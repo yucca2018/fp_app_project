@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #追加
     'drf_test_app',
+    'rest_framework.authtoken',
     'rest_framework',
 ]
 
@@ -113,5 +114,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = "drf_test_app.UserInfo"
 
 
